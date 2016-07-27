@@ -22,6 +22,29 @@ function showAllData(){
 }
  ?>
 
+<?php
+
+function createRows(){
+
+ global $connection;
+ $username = $_POST['username'];
+ $password = $_POST['password'];
+
+ $query = "INSERT INTO users(username,password) ";
+ $query .= "VALUES ('$username', '$password')";
+
+ $result = mysqli_query($connection, $query);
+
+ //checking if the query was successful
+ if($result) {
+   echo "Success!";
+ }else{
+   die('Query FAILED '. mysqli_error());
+ }
+
+}
+?>
+
  <?php
 function updateTable(){
   global $connection;
