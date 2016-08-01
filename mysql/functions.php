@@ -36,8 +36,14 @@ function createRows(){
    $username = mysqli_real_escape_string($connection, $username);
    $password = mysqli_real_escape_string($connection, $password);
 
+   $hashFormat = "$2y$10$";
+   $salt = "iusesomecrazystrings22";
+   $hash_and_salt = $hashFormat . $salt;
+
+   $encrypt_password = crypt($password, $hash_and_salt);
+
    $query = "INSERT INTO users(username,password) ";
-   $query .= "VALUES ('$username', '$password')";
+   $query .= "VALUES ('$username', '$encrypt_password')";
 
    $result = mysqli_query($connection, $query);
 
@@ -65,10 +71,19 @@ function updateTable(){
      $username = mysqli_real_escape_string($connection, $username);
      $password = mysqli_real_escape_string($connection, $password);
 
+     $username = mysqli_real_escape_string($connection, $username);
+     $password = mysqli_real_escape_string($connection, $password);
+
+     $hashFormat = "$2y$10$";
+     $salt = "iusesomecrazystrings22";
+     $hash_and_salt = $hashFormat . $salt;
+
+     $encrypt_password = crypt($password, $hash_and_salt);
+
    //concatenated query - easier to spot mistakes
      $query = "UPDATE users SET ";
      $query .= "username = '$username', ";
-     $query .= "password = '$password' ";
+     $query .= "password = '$encrypt_password' ";
      $query .= "WHERE id = $id ";
 
      $result = mysqli_query($connection, $query);
