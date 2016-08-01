@@ -32,6 +32,10 @@ function createRows(){
    $username = $_POST['username'];
    $password = $_POST['password'];
 
+   //sanitizing inputs to prevent SQL injection from hackers
+   $username = mysqli_real_escape_string($connection, $username);
+   $password = mysqli_real_escape_string($connection, $password);
+
    $query = "INSERT INTO users(username,password) ";
    $query .= "VALUES ('$username', '$password')";
 
@@ -56,6 +60,10 @@ function updateTable(){
      $username = $_POST['username'];
      $password = $_POST['password'];
      $id = $_POST['id'];
+
+     //sanitizing inputs to prevent SQL injection from hackers
+     $username = mysqli_real_escape_string($connection, $username);
+     $password = mysqli_real_escape_string($connection, $password);
 
    //concatenated query - easier to spot mistakes
      $query = "UPDATE users SET ";
