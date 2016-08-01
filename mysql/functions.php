@@ -37,7 +37,7 @@ function createRows(){
 
  //checking if the query was successful
  if($result) {
-   echo "Success!";
+   echo "Record Created";
  }else{
    die('Query FAILED '. mysqli_error());
  }
@@ -61,7 +61,7 @@ function updateTable(){
    $result = mysqli_query($connection, $query);
 
    if($result) {
-     echo "Success!";
+     echo "Record Updated";
    }else{
      die('Query FAILED '. mysqli_error());
    }
@@ -84,7 +84,7 @@ function updateTable(){
     $result = mysqli_query($connection, $query);
 
     if($result) {
-      echo "Success!";
+      echo "Record Deleted";
     }else{
       die('Query FAILED '. mysqli_error());
     }
