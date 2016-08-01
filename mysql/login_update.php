@@ -1,10 +1,8 @@
 <?php include "db.php"; ?>
 <?php include "functions.php"; ?>
-<?php
-if(isset($_POST['submit'])){
-  updateTable();
-}
-?>
+<?php updateTable();?>
+
+
 <!Doctype html>
 <html lang="en">
 <head>

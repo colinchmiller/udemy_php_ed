@@ -1,14 +1,7 @@
-<?php include "db.php";
-include "functions.php";
+<?php include "db.php";?>
+<?php include "functions.php";?>
 
-if(isset($_POST['submit'])){
-
-createRows();
-
-}
-
-
-?>
+<?php createRows(); ?>
 
 <!Doctype html>
 <html lang="en">

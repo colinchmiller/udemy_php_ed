@@ -26,44 +26,50 @@ function showAllData(){
 
 function createRows(){
 
- global $connection;
- $username = $_POST['username'];
- $password = $_POST['password'];
+  if(isset($_POST['submit'])){
 
- $query = "INSERT INTO users(username,password) ";
- $query .= "VALUES ('$username', '$password')";
+   global $connection;
+   $username = $_POST['username'];
+   $password = $_POST['password'];
 
- $result = mysqli_query($connection, $query);
+   $query = "INSERT INTO users(username,password) ";
+   $query .= "VALUES ('$username', '$password')";
 
- //checking if the query was successful
- if($result) {
-   echo "Record Created";
- }else{
-   die('Query FAILED '. mysqli_error());
- }
+   $result = mysqli_query($connection, $query);
 
+   //checking if the query was successful
+   if($result) {
+     echo "Record Created";
+   }else{
+     die('Query FAILED '. mysqli_error());
+   }
+
+  }
 }
 ?>
 
  <?php
 function updateTable(){
-  global $connection;
-   $username = $_POST['username'];
-   $password = $_POST['password'];
-   $id = $_POST['id'];
 
- //concatenated query - easier to spot mistakes
-   $query = "UPDATE users SET ";
-   $query .= "username = '$username', ";
-   $query .= "password = '$password' ";
-   $query .= "WHERE id = $id ";
+  if(isset($_POST['submit'])){
+    global $connection;
+     $username = $_POST['username'];
+     $password = $_POST['password'];
+     $id = $_POST['id'];
 
-   $result = mysqli_query($connection, $query);
+   //concatenated query - easier to spot mistakes
+     $query = "UPDATE users SET ";
+     $query .= "username = '$username', ";
+     $query .= "password = '$password' ";
+     $query .= "WHERE id = $id ";
 
-   if($result) {
-     echo "Record Updated";
-   }else{
-     die('Query FAILED '. mysqli_error());
+     $result = mysqli_query($connection, $query);
+
+     if($result) {
+       echo "Record Updated";
+     }else{
+       die('Query FAILED '. mysqli_error());
+     }
    }
  }
 
@@ -72,22 +78,24 @@ function updateTable(){
 
   <?php
  function deleteRows(){
-   global $connection;
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $id = $_POST['id'];
+   if(isset($_POST['submit'])){
+     global $connection;
+      $username = $_POST['username'];
+      $password = $_POST['password'];
+      $id = $_POST['id'];
 
-  //concatenated query - easier to spot mistakes
-    $query = "DELETE from users ";
-    $query .= "WHERE id = $id ";
+    //concatenated query - easier to spot mistakes
+      $query = "DELETE from users ";
+      $query .= "WHERE id = $id ";
 
-    $result = mysqli_query($connection, $query);
+      $result = mysqli_query($connection, $query);
 
-    if($result) {
-      echo "Record Deleted";
-    }else{
-      die('Query FAILED '. mysqli_error());
+      if($result) {
+        echo "Record Deleted";
+      }else{
+        die('Query FAILED '. mysqli_error());
+      }
     }
-  }
+}
 
    ?>
